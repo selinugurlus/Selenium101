@@ -14,7 +14,7 @@ public class Test1 {
         // kullanabilirsiniz.
 
             // ChromeDriver'ı başlatın
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver() ;
 
         // Web sayfasına gidin
         driver.get("https://demoqa.com/text-box");
