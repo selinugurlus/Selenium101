@@ -8,27 +8,29 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Test1 {
 
-    public static void main(String[] args)
-    {
-       // Selenium 4 ile birlikte, chromedriver gibi tarayıcı sürücülerini manuel olarak indirip
+    public static void main(String[] args) {
+        // Selenium 4 ile birlikte, chromedriver gibi tarayıcı sürücülerini manuel olarak indirip
         // belirtmek yerine, WebDriverManager kullanarak otomatik olarak bu sürücüleri indirip
         // kullanabilirsiniz.
 
-            // ChromeDriver'ı başlatın
-        WebDriver driver = new ChromeDriver() ;
+        // ChromeDriver'ı başlatın
+        WebDriver driver = new ChromeDriver();
         Actions actions = new Actions(driver);
 
         // Web sayfasına gidin
-        driver.get("https://demoqa.com/text-box");
+       /* driver.get("https://demoqa.com/text-box");
         driver.manage().window().maximize(); //açılan web sayfasını büyütür.
 
         WebElement fullName = driver.findElement(By.id("userName")); //id'si userName olan elementi nameElemente atıyoruz.
@@ -38,17 +40,16 @@ public class Test1 {
 
         actions.sendKeys(Keys.PAGE_DOWN).build().perform();
 
-        WebElement email =driver.findElement(new By.ByCssSelector(".mr-sm-2[id='userEmail']"));
+        WebElement email = driver.findElement(new By.ByCssSelector(".mr-sm-2[id='userEmail']"));
         email.click();
         email.sendKeys("selinugurlu@gmail.com");
 
 
-
-        WebElement currentAddress=driver.findElement(By.id("currentAddress"));
+        WebElement currentAddress = driver.findElement(By.id("currentAddress"));
         currentAddress.click();
         currentAddress.sendKeys("İzmir");
 
-        WebElement permanentAddress= driver.findElement(By.id("permanentAddress"));
+        WebElement permanentAddress = driver.findElement(By.id("permanentAddress"));
         permanentAddress.click();
         permanentAddress.sendKeys("Turkey");
 
@@ -57,12 +58,12 @@ public class Test1 {
 
         //Textleri alma:
 
-        WebElement nameText=driver.findElement(By.xpath("//div/p[@id='name']")); //xpath sorgusu kullandık elemente erişmek için:XPath, XML belgeleri için bir sorgu dilidir.
-        String name= nameText.getText();
+        WebElement nameText = driver.findElement(By.xpath("//div/p[@id='name']")); //xpath sorgusu kullandık elemente erişmek için:XPath, XML belgeleri için bir sorgu dilidir.
+        String name = nameText.getText();
         System.out.println(name);
 
-        WebElement emailText= driver.findElement(By.xpath("//div/p[@id='email']"));
-        String mail=emailText.getText();
+        WebElement emailText = driver.findElement(By.xpath("//div/p[@id='email']"));
+        String mail = emailText.getText();
         System.out.println(mail);
 
         //Checkbox tıklama
@@ -71,22 +72,19 @@ public class Test1 {
         driver.get("https://demoqa.com/checkbox");
         driver.manage().window().maximize(); //açılan web sayfasını büyütür.
 
-        String homeCheckBoxCssValue= "label[for='tree-node-home'] span.rct-checkbox svg";
-        WebElement homeCheckBox= driver.findElement(new By.ByCssSelector(homeCheckBoxCssValue));
+        String homeCheckBoxCssValue = "label[for='tree-node-home'] span.rct-checkbox svg";
+        WebElement homeCheckBox = driver.findElement(new By.ByCssSelector(homeCheckBoxCssValue));
         homeCheckBox.click();
 
         //check box check edilmiş mi diye kontrol:
 
-        homeCheckBox=driver.findElement(new By.ByCssSelector(homeCheckBoxCssValue));
+        homeCheckBox = driver.findElement(new By.ByCssSelector(homeCheckBoxCssValue));
 
-        String homeCheckBoxClassName=homeCheckBox.getAttribute("class");
+        String homeCheckBoxClassName = homeCheckBox.getAttribute("class");
 
-        if(homeCheckBoxClassName.equals("rct-icon rct-icon-check"))
-        {
+        if (homeCheckBoxClassName.equals("rct-icon rct-icon-check")) {
             System.out.println("Checkbox is checked!");
-        }
-        else
-        {
+        } else {
             System.out.println("Checkbox is not checked!");
         }
 
@@ -96,12 +94,12 @@ public class Test1 {
 
         actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
 
-        WebElement sportCheckbox= driver.findElement(By.id("hobbies-checkbox-1"));
-        boolean isEnabled=sportCheckbox.isEnabled(); //bu element tıklanabilir mi? diye kontrol eder. Boolen ifade döner. Tıklanıyorsa:true, tıklanamıyorsa false döner.
+        WebElement sportCheckbox = driver.findElement(By.id("hobbies-checkbox-1"));
+        boolean isEnabled = sportCheckbox.isEnabled(); //bu element tıklanabilir mi? diye kontrol eder. Boolen ifade döner. Tıklanıyorsa:true, tıklanamıyorsa false döner.
         System.out.println(isEnabled);
 
-        WebElement sportsCheckboxLabel=driver.findElement(new By.ByCssSelector("label[for='hobbies-checkbox-1']"));
-        if(isEnabled) {
+        WebElement sportsCheckboxLabel = driver.findElement(new By.ByCssSelector("label[for='hobbies-checkbox-1']"));
+        if (isEnabled) {
             try {
                 sportCheckbox.click();
             } catch (ElementClickInterceptedException ex) {
@@ -109,21 +107,20 @@ public class Test1 {
                 System.out.println("Entered catch block.");
             }
         }
-        boolean isSelected= sportCheckbox.isSelected();
+        boolean isSelected = sportCheckbox.isSelected();
         System.out.println(isSelected);
 
 
         //Radiobutton
 
         driver.get("https://demoqa.com/radio-button");
-        WebElement yesRadioButtonLabel=driver.findElement(new By.ByCssSelector("label[for='yesRadio']"));
-        boolean isEnabledRadioButton=yesRadioButtonLabel.isEnabled();
-        if(isEnabledRadioButton)
-        {
+        WebElement yesRadioButtonLabel = driver.findElement(new By.ByCssSelector("label[for='yesRadio']"));
+        boolean isEnabledRadioButton = yesRadioButtonLabel.isEnabled();
+        if (isEnabledRadioButton) {
             yesRadioButtonLabel.click();
         }
 
-        WebElement output =  driver.findElement(new By.ByCssSelector("p.mt-3"));
+        WebElement output = driver.findElement(new By.ByCssSelector("p.mt-3"));
         System.out.println(output.getText());
 
 
@@ -132,22 +129,22 @@ public class Test1 {
 
         //çift tıklama:
 
-        WebElement doubleClickBtn=driver.findElement(By.id("doubleClickBtn"));
+        WebElement doubleClickBtn = driver.findElement(By.id("doubleClickBtn"));
 
-        Actions action =new Actions(driver);
+        Actions action = new Actions(driver);
         action.doubleClick(doubleClickBtn).perform();
 
         actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
 
         //Sağ tıklama:
-        WebElement rightClickBtn=driver.findElement(By.id("rightClickBtn"));
+        WebElement rightClickBtn = driver.findElement(By.id("rightClickBtn"));
         action.contextClick(rightClickBtn).perform();
 
 
         //DİNAMİK ELEMENTLER:
 
         //xpath performans açısından pek tercih edilmez. Mecbur kalındığında kullanılmalı.
-        WebElement dynamicClickBtn= driver.findElement(By.xpath("//div[last()]/button"));
+        WebElement dynamicClickBtn = driver.findElement(By.xpath("//div[last()]/button"));
         dynamicClickBtn.click();
 
         driver.get("https://demoqa.com/dynamic-properties");
@@ -155,23 +152,23 @@ public class Test1 {
         actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
 
         WebElement textElement = driver.findElement(By.xpath("//div/p"));
-        String text=textElement.getText();
+        String text = textElement.getText();
         System.out.println(text);
 
-        WebElement enableAfterButton=driver.findElement(By.id("enableAfter"));
+        WebElement enableAfterButton = driver.findElement(By.id("enableAfter"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5)); //5 saniye bekle demek
         wait.until(ExpectedConditions.elementToBeClickable(enableAfterButton)); //Bu element tıklanabilir olana kadar bekle demek. üstte yazdğımız 5 üst sınıf. eğer 5saniyeden çnce clickable olursa yine tıklar.
         enableAfterButton.click();
 
 
         //--
-        WebElement colorChangeButton =driver.findElement(By.id("colorChange"));
-        String className=colorChangeButton.getDomAttribute("class");
-        System.out.println("Before change:"+className);
+        WebElement colorChangeButton = driver.findElement(By.id("colorChange"));
+        String className = colorChangeButton.getDomAttribute("class");
+        System.out.println("Before change:" + className);
 
-        wait.until(ExpectedConditions.attributeToBe(colorChangeButton,"class","mt-4 text-danger btn btn-primary"));
-        className=colorChangeButton.getDomAttribute("class");
-        System.out.println("After change:"+className);
+        wait.until(ExpectedConditions.attributeToBe(colorChangeButton, "class", "mt-4 text-danger btn btn-primary"));
+        className = colorChangeButton.getDomAttribute("class");
+        System.out.println("After change:" + className);
 
         colorChangeButton.click();
 
@@ -235,8 +232,93 @@ public class Test1 {
             e.printStackTrace(); // Hata varsa yazdırıyoruz
         } catch (Exception e) {
             e.printStackTrace(); // Diğer hataları da yakalıyoruz
+        }*/
+
+
+        //dosya yükleme:
+
+      /*  driver.get("https://demoqa.com/upload-download");
+
+        driver.manage().window().maximize(); //açılan web sayfasını büyütür.
+
+        WebElement downloadButton = driver.findElement(By.id("downloadButton"));
+        downloadButton.click();
+
+        String path = "C:\\Users\\Köseler\\Downloads"; //dosyanın ineceği bilgisayarımızdaki klasörümüzün yolu
+        String fileName = "sampleFile.jpeg";
+        try {
+            Thread.sleep(5000); // 5 saniye bekleme koyduk çünkü daha indirmeden gidip o dosyayı aramaya çalışıyo o yüzden isFileDowbloaded fonksiyonu false dönüyordu.
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // Hata mesajını yazdırır
         }
+        boolean isDownloaded=isFileDownloaded(path,fileName);
+        System.out.println(isDownloaded);
+
+        //Dosya Yükleme:
+
+        actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
+
+        WebElement uploadButton=driver.findElement(By.id("uploadFile"));
+        uploadButton.sendKeys("C:/Users/Köseler/Downloads/Beige Minimalist Professional LinkedIn Background Photo.png");*/
+
+        //Window/Tab Etkileşimleri:
+
+       /* driver.get("https://demoqa.com/browser-windows");
+        actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
+
+        WebElement tabButton= driver.findElement(By.id("tabButton"));
+        tabButton.click();
+
+        List<String> tabs=new ArrayList<>(driver.getWindowHandles()); //açık olan sekmeleri bir listeye atıyoruz.
+
+        System.out.println(tabs.size()); //kaç tane sekme olduğunu yazdırıyoruz.
+
+        driver.switchTo().window(tabs.get(1)); //tabs listesindeki 2. sekmeye geçiş yapıyoruz.
+
+        System.out.println(driver.getCurrentUrl()); //driverin bulunduğu sekmenin url'ini konsola yazdırıyoruz.
+
+        try {
+            Thread.sleep(1000); // 2 saniye bekleme koyduk çünkü çok hızlı close ediyordu görebilmek için
+        } catch (InterruptedException e) {
+            e.printStackTrace(); // Hata mesajını yazdırır
+        }
+
+        driver.close(); //driver'ın bulunduğu pencereyi kapatır. (driver'ı kapatmıyor.) driver.quit bu tamamen driver'ı kapatıyor.*/
+
+        //Alerts:
+
+        driver.get("https://demoqa.com/alerts");
+        actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
+
+        driver.findElement(By.id("alertButton")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.alertIsPresent());
+
+     //   System.out.println(driver.switchTo().alert().getText()); //Alert'in içinde yazan texti almak için.
+
+       //driver.switchTo().alert().sendKeys("Selin"); //Alert'in içindeki textbox'a text yazmak için.
+
+        driver.switchTo().alert().accept();
+
+
+
+
 
     }
 
+    public static boolean isFileDownloaded(String downloadPath, String fileName)
+    {
+        File file =new File(downloadPath);
+        File[] files=file.listFiles();
+
+        for(int i=0; i < files.length;i++) {
+            if (files[i].getName().equals(fileName))
+            {
+                files[i].delete();
+                return true;
+            }
+        }
+        return  false;
+    }
 }
