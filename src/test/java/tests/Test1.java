@@ -237,14 +237,6 @@ public class Test1 {
             e.printStackTrace(); // Diğer hataları da yakalıyoruz
         }
 
-
-
-
-
     }
-
-
-
-
 
 }
