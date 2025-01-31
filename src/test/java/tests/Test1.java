@@ -20,6 +20,7 @@ import java.util.List;
 
 public class Test1 {
 
+
     public static void main(String[] args) {
         // Selenium 4 ile birlikte, chromedriver gibi tarayıcı sürücülerini manuel olarak indirip
         // belirtmek yerine, WebDriverManager kullanarak otomatik olarak bu sürücüleri indirip
