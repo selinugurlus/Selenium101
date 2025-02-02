@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -288,7 +289,7 @@ public class Test1 {
 
         //Alerts:
 
-        driver.get("https://demoqa.com/alerts");
+       /* driver.get("https://demoqa.com/alerts");
         actions.sendKeys(Keys.PAGE_DOWN).build().perform(); //sayfayı aşağı indiriyoruz.
 
         driver.findElement(By.id("alertButton")).click();
@@ -300,7 +301,87 @@ public class Test1 {
 
        //driver.switchTo().alert().sendKeys("Selin"); //Alert'in içindeki textbox'a text yazmak için.
 
-        driver.switchTo().alert().accept();
+        driver.switchTo().alert().accept();*/
+
+//FRAMES:
+     /*   driver.get("https://demoqa.com/frames");
+
+        //driver.switchTo().frame(0); //burda index numarasına göre ulaştık.
+
+        driver.switchTo().frame("frame1"); //burda frame'in id'sine göre ulaştık.
+
+        WebElement heading= driver.findElement(By.id("sampleHeading"));
+        String text=heading.getText();
+        System.out.println(text);
+
+        driver.switchTo().parentFrame(); //Bir  üstteki ana frame'e geçiş yapıyoruz.*/
+
+//MODALS: öne bir popup gibib çıkıyo ve arkasındaki syafayıı pasif hale getiren bir element.
+       /* driver.get("https://demoqa.com/modal-dialogs");
+
+        JavascriptExecutor Js = ((JavascriptExecutor)driver);
+
+        Js.executeScript("window.scrollBy(0,600)") ; //sayfayı aşağı indiriyoruz.
+        WebElement smallButton=driver.findElement(By.id("showSmallModal"));
+        smallButton.click();
+
+        WebElement smallCloseButton=driver.findElement(By.id("closeSmallModal"));
+        smallCloseButton.click();*/
+
+       //AUTO COMPLETE:
+
+       /* driver.get("https://demoqa.com/auto-complete");
+
+        WebElement input=driver.findElement(By.cssSelector("div.auto-complete__option"));
+        input.sendKeys("R");
+
+        List<WebElement> suggestions=driver.findElements(By.cssSelector("div.auto-complete__option"));
+
+        for(WebElement suggestion:suggestions)
+        {
+            String text = suggestion.getText();
+            System.out.println(text);
+
+            if(text.equals("Red")) //eğer önerilenin texti "Red" olan varsa ona tıkla diyoruz.
+            {
+                suggestion.click();
+                break;
+            }
+        }
+
+        //suggestions.get(0).click(); //r yhazınca önerilenklerden lkine tıklar.*/
+
+
+        //DATE PICKER
+
+        driver.get("https://demoqa.com/date-picker");
+        driver.manage().window().maximize();
+
+        WebElement datePicker = driver.findElement(By.id("datePickerMonthYearInput"));
+        datePicker.click();
+
+        WebElement month=driver.findElement(By.className("react-datepicker__month-select"));
+
+        Select select = new Select(month);  //Dropdown'dan bi şey seçmek istediğimizde bu kütüphaneyi kullanmalıyız.
+
+        select.selectByVisibleText("December");
+
+        WebElement year=driver.findElement(By.className("react-datepicker__year-select"));
+        select = new Select(year);
+        select.selectByVisibleText("2019");
+
+       List<WebElement> days=driver.findElements(By.cssSelector("div.react-datepicker__day"));
+
+       for(WebElement day:days)
+       {
+          // System.out.println(day.getText());
+          String dayText=day.getText();
+            if(dayText.equals("18"))
+           {
+            day.click();
+            break;
+           }
+       }
 
 
 
