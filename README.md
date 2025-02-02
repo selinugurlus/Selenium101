@@ -1,4 +1,15 @@
+# Selenium Tests (Java)  
+This repository contains tests using **Selenium** for various elements on the **demoqa.com** website. The tests aim to interact with elements such as forms, buttons, and other interactive components on the site.  
 
-# Selenium DemoQA Tests (Java) This repository contains tests using **Selenium** for various elements on the **demoqa.com** website. The tests aim to interact with elements such as forms, buttons, and other interactive components on the site.
-## Requirements - JDK 8 or above - Maven - Selenium WebDriver - WebDriver (ChromeDriver) 
-## Setup 1. **Clone the repository:** ```bash git clone https://github.com/selinugurlus/Selenium101.git cd Selenium101 ``` 2. **Install the required dependencies using Maven:** Maven will automatically manage the project dependencies. You can install them by running: ```bash mvn install ``` 3. **Run the tests:** You can run the tests using the following command: ```bash mvn test ``` The tests will be executed from the test files located in the `src/test/java` directory. ## Tested Elements This project tests the following key elements on the DemoQA site: - Forms (text input, checkboxes, radio buttons, etc.) - Buttons - Dropdown menus - Alerts and Dialogs - Iframes - And more! ## Contributing If you would like to contribute to this project, you can follow these steps: 1. Fork this repository. 2. Create a new branch: `git checkout -b feature/new-feature` 3. Make your changes and commit: `git commit -am 'Add new feature'` 4. Push your changes: `git push origin feature/new-feature` 5. Submit a pull request. ## License This project is licensed under the [MIT License](LICENSE).
+## Requirements  
+- JDK 8 or above  
+- Maven  
+- Selenium WebDriver  
+- WebDriver (ChromeDriver)  
+
+## Setup  
+1. **Clone the repository:**  
+   ```bash  
+   git clone https://github.com/selinugurlus/Selenium101.git  
+   cd Selenium101  
+
